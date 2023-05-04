@@ -1,0 +1,13 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 0 auto;
+    font-family: "Exo2";
+}
+.appTitle {
+    display: flex;
+    align-self: center;
+}
