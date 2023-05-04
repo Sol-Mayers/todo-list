@@ -43,7 +43,7 @@ export const TodoList = () => {
                                 onChange={() => dispatch(toggleTodo(todo.id))}
                                 className={styles.listCheck}
                             />{" "}
-                            <span
+                            <div
                                 style={{ cursor: "pointer" }}
                                 onClick={() =>
                                     dispatch(showChangingField(todo.id))
@@ -51,7 +51,10 @@ export const TodoList = () => {
                                 className={styles.listText}
                             >
                                 {todo.title}
-                            </span>{" "}
+                                <div className={styles.changeText}>
+                                    Изменить
+                                </div>
+                            </div>{" "}
                         </div>
 
                         <button
