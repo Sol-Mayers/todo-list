@@ -7,3 +7,13 @@
 .filtersItem:not(:last-child) {
     margin-right: 20px;
 }
+.filtersItem {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: "Exo2";
+    font-size: 18px;
+    font-weight: 600;
+}

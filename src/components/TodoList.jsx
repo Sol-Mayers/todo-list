@@ -7,13 +7,15 @@ import {
 } from "../store/todos/todos-actions";
 import { selectVisibleTodos } from "../store/todos/todos-selectors";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { selectActiveFilter } from "../store/filters/filters-selectors";
 import styles from "./TodoList.module.scss";
 
 export const TodoList = () => {
     const dispatch = useDispatch();
-    const { filter } = useParams();
-    const todos = useSelector((state) => selectVisibleTodos(state, filter));
+    const activeFilter = useSelector(selectActiveFilter);
+    const todos = useSelector((state) =>
+        selectVisibleTodos(state, activeFilter)
+    );
     const [value, setValue] = useState("");
     const [visible, setVisible] = useState(false);
 

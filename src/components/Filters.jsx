@@ -1,34 +1,37 @@
-import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { selectActiveFilter } from "../store/filters/filters-selectors";
+import { setFilter } from "../store/filters/filters-actions";
 import styles from "./Filters.module.scss";
 
 const Filters = () => {
-    const { filter: activeFilter = "all" } = useParams();
+    const dispatch = useDispatch();
+    const activeFilter = useSelector(selectActiveFilter);
 
     return (
         <div className={styles.filtersWrapper}>
-            <Link
-                to="/all"
+            <button
+                onClick={() => dispatch(setFilter("all"))}
                 style={{ color: activeFilter === "all" ? "red" : "black" }}
                 className={styles.filtersItem}
             >
                 все
-            </Link>
-            <Link
-                to="/active"
+            </button>
+            <button
+                onClick={() => dispatch(setFilter("active"))}
                 style={{ color: activeFilter === "active" ? "red" : "black" }}
                 className={styles.filtersItem}
             >
                 активные
-            </Link>
-            <Link
-                to="/completed"
+            </button>
+            <button
+                onClick={() => dispatch(setFilter("completed"))}
                 style={{
                     color: activeFilter === "completed" ? "red" : "black",
                 }}
                 className={styles.filtersItem}
             >
                 завершённые
-            </Link>
+            </button>
         </div>
     );
 };
