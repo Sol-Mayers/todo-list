@@ -1,32 +1,44 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectActiveFilter } from "../store/filters/filters-selectors";
-import { setFilter } from "../store/filters/filters-actions";
+import { setFilter } from "../store/features/filters/filters-slice";
 import styles from "./Filters.module.scss";
 
-const Filters = () => {
+export const Filters = () => {
     const dispatch = useDispatch();
-    const activeFilter = useSelector(selectActiveFilter);
+    const activeFilter = useSelector((state) => state.filter);
+
+    const handleFilter = (val) => dispatch(setFilter(val));
 
     return (
         <div className={styles.filtersWrapper}>
             <button
-                onClick={() => dispatch(setFilter("all"))}
-                style={{ color: activeFilter === "all" ? "red" : "black" }}
+                onClick={() => handleFilter("all")}
+                style={{
+                    color:
+                        activeFilter === "all" ? "rgba(248, 181, 94)" : "white",
+                }}
                 className={styles.filtersItem}
             >
                 все
             </button>
             <button
-                onClick={() => dispatch(setFilter("active"))}
-                style={{ color: activeFilter === "active" ? "red" : "black" }}
+                onClick={() => handleFilter("active")}
+                style={{
+                    color:
+                        activeFilter === "active"
+                            ? "rgba(248, 181, 94)"
+                            : "white",
+                }}
                 className={styles.filtersItem}
             >
                 активные
             </button>
             <button
-                onClick={() => dispatch(setFilter("completed"))}
+                onClick={() => handleFilter("completed")}
                 style={{
-                    color: activeFilter === "completed" ? "red" : "black",
+                    color:
+                        activeFilter === "completed"
+                            ? "rgba(248, 181, 94)"
+                            : "white",
                 }}
                 className={styles.filtersItem}
             >
@@ -35,5 +47,3 @@ const Filters = () => {
         </div>
     );
 };
-
-export { Filters };

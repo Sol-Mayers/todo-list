@@ -1,8 +1,12 @@
 .filtersWrapper {
-    display: "flex";
-    flex-direction: "row";
-    justify-content: "center";
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin: 0 auto 20px auto;
+    background-color: #20b2aa;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
 }
 .filtersItem:not(:last-child) {
     margin-right: 20px;

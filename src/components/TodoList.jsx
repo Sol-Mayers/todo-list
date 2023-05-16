@@ -1,18 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import styles from "./TodoList.module.scss";
 import {
     removeTodo,
     toggleTodo,
     changeTodo,
     showChangingField,
-} from "../store/todos/todos-actions";
-import { selectVisibleTodos } from "../store/todos/todos-selectors";
-import { useState } from "react";
-import { selectActiveFilter } from "../store/filters/filters-selectors";
-import styles from "./TodoList.module.scss";
+    selectVisibleTodos,
+} from "../store/features/todos/todos-slice";
 
 export const TodoList = () => {
     const dispatch = useDispatch();
-    const activeFilter = useSelector(selectActiveFilter);
+    const activeFilter = useSelector((state) => state.filter);
     const todos = useSelector((state) =>
         selectVisibleTodos(state, activeFilter)
     );
@@ -21,7 +20,7 @@ export const TodoList = () => {
 
     const handleSubmit = (itemId, itemValue) => {
         if (value.length !== 0) {
-            dispatch(changeTodo(itemId, itemValue));
+            dispatch(changeTodo({ id: itemId, title: itemValue }));
             setValue("");
         } else {
             setVisible(true);
@@ -69,7 +68,11 @@ export const TodoList = () => {
 
                     {todo.changing && (
                         <div className={styles.changeBlock}>
-                            <input type="text" onChange={writeText} />
+                            <input
+                                type="text"
+                                onChange={writeText}
+                                className={styles.changingField}
+                            />
                             <div
                                 className={visible ? styles.show : styles.hide}
                             >
@@ -77,6 +80,7 @@ export const TodoList = () => {
                             </div>
                             <button
                                 onClick={() => handleSubmit(todo.id, value)}
+                                className={styles.changeButton}
                             >
                                 Изменить
                             </button>

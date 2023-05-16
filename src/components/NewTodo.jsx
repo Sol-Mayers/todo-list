@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addTodo } from "../store/todos/todos-actions";
+import { addTodo } from "../store/features/todos/todos-slice";
 import { useState } from "react";
 import styles from "./NewTodo.module.scss";
 
@@ -21,15 +21,22 @@ export const NewTodo = () => {
     return (
         <div className={styles.todoWrapper}>
             <form onSubmit={handleSubmit} className={styles.addField}>
-                <input
-                    type="text"
-                    name="title"
-                    placeholder="Новая задача..."
-                    onInput={() => setVisible(false)}
-                />
-                <input type="submit" value="Добавить" />
-                <div className={visible ? styles.show : styles.hide}>
-                    Поле не может быть пустым
+                <div className={styles.taskWrapper}>
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Новая задача..."
+                        onInput={() => setVisible(false)}
+                        className={styles.taskField}
+                    />
+                    <input
+                        type="submit"
+                        value="Добавить"
+                        className={styles.addButton}
+                    />
+                    <div className={visible ? styles.show : styles.hide}>
+                        Поле не может быть пустым
+                    </div>
                 </div>
             </form>
         </div>

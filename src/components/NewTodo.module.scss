@@ -2,7 +2,7 @@
     display: flex;
     color: red;
     position: absolute;
-    top: 0;
+    top: 15px;
     left: 0;
     transform: translateY(25px);
 }
@@ -17,4 +17,51 @@
 }
 .addField {
     position: relative;
+}
+.taskField {
+    margin-right: 10px;
+}
+.addButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #20b2aa;
+    border: none;
+    outline: none;
+    font-family: "Exo2";
+    color: #ffffff;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 0px 2px 1px #808080;
+    }
+}
+.taskField {
+    box-sizing: border-box;
+    padding: 10px;
+    border: #20b2aa;
+    font-family: "Exo2";
+    color: #000000;
+    margin-bottom: 10px;
+    &:hover {
+        box-shadow: 0px 0px 2px 1px #808080;
+    }
+    &:enabled {
+        border: 2px solid #20b2aa;
+        outline: none;
+    }
+    @media (min-width: 300px) {
+        margin-bottom: 0px;
+    }
+}
+.taskWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media (min-width: 300px) {
+        flex-direction: row;
+    }
 }
