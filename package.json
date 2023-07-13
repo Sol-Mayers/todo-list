@@ -1,6 +1,6 @@
 {
     "name": "03-structure",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "homepage": "https://sol-mayers.github.io/todo-list",
     "dependencies": {
