@@ -18,7 +18,7 @@ export const Filters = () => {
                 }}
                 className={styles.filtersItem}
             >
-                все!
+                все!!
             </button>
             <button
                 onClick={() => handleFilter("active")}
